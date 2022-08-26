@@ -1,10 +1,6 @@
  package com.vijay.springbootconfig;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,56 +8,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
 	/*
-	 * 05 Three Value annotation tricks you should know
-	 *  http://localhost:8080/staticmessage
-	 *  http://localhost:8080/defaultvalue
-	 *  
+	 * 06 Configuration Properties
+	 * http://localhost:8080/actuator/configprops
+	 * http://localhost:8080/dbsettings
+	 * 
+	 * 07 is about yml file structure
 	 */
-	@Value("some static message")
-	private String staticMessage;
+	@Autowired
+	private DbSettings dbSettings;
+	
 
-	@GetMapping("/staticmessage")
-	public String staticMessage() {
-		return staticMessage;
-	}
-	
-	@Value("${my.defaultvalue: default value}")
-	private String defaultValue;
-
-	@GetMapping("/defaultvalue")
-	public String defaultValue() {
-		return defaultValue;
-	}
-	
-	
 	/*
-	 * Fetching List, Set and Map using @Value annotation
-	 * http://localhost:8080/listvalues
-	 * http://localhost:8080/setvalues
-	 * http://localhost:8080/mapvalues
+	 * This we will use in 11, 12 Video for spring cloud config
 	 */
-	@Value("${my.list.values}")
-	private List<String> listValues;
-	
-	@GetMapping("/listvalues")
-	public List<String> listvalue() {
-		return listValues;
-	}
-	
-	@Value("${my.set.values}")
-	private Set<String> setValues;
-	
-	@GetMapping("/setvalues")
-	public Set<String> setvalue() {
-		return setValues;
-	}
-	
-	@Value("#{${dbvalues}}")
-	private Map<String,String> mapValues;
-	
-	@GetMapping("mapvalues")
-	public Map<String,String> mapValues() {
-		return mapValues;
+	@GetMapping("/dbsettings")
+	public String getDbSettings() {
+		return dbSettings.toString();
 	}
 
 }
