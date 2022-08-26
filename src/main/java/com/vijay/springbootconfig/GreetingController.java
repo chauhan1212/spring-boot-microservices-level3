@@ -1,5 +1,9 @@
  package com.vijay.springbootconfig;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,35 +12,56 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
 	/*
-	 * 03 Using property file config with Spring Boot
-	 * 04 Using external property sources with Spring Boot
-	 * 
-	 * Method1:
-	 * create application.properties in same dir where jar exist. ( it will override properties insider properties)
-	 * java -jar .\spring-boot-config-0.0.1-SNAPSHOT.jar
-	 * 
-	 * Method2:
-	 * java -jar .\spring-boot-config-0.0.1-SNAPSHOT.jar --server.port=8081 --my.greeting="Hello from command line args"
-	 * 
-	 * 
-	 * http://localhost:8080/greeting
-	 * http://localhost:8080/desc
+	 * 05 Three Value annotation tricks you should know
+	 *  http://localhost:8080/staticmessage
+	 *  http://localhost:8080/defaultvalue
+	 *  
 	 */
-	
-	@Value("${my.greeting}")
-	private String greetingMessage;
-	
-	@GetMapping("/greeting")
-	public String greeting() {
-		return greetingMessage;
-	}
+	@Value("some static message")
+	private String staticMessage;
 
-	@Value("${app.description}")
-	private String description;
+	@GetMapping("/staticmessage")
+	public String staticMessage() {
+		return staticMessage;
+	}
 	
-	@GetMapping("/desc")
-	public String desc() {
-		return description;
+	@Value("${my.defaultvalue: default value}")
+	private String defaultValue;
+
+	@GetMapping("/defaultvalue")
+	public String defaultValue() {
+		return defaultValue;
+	}
+	
+	
+	/*
+	 * Fetching List, Set and Map using @Value annotation
+	 * http://localhost:8080/listvalues
+	 * http://localhost:8080/setvalues
+	 * http://localhost:8080/mapvalues
+	 */
+	@Value("${my.list.values}")
+	private List<String> listValues;
+	
+	@GetMapping("/listvalues")
+	public List<String> listvalue() {
+		return listValues;
+	}
+	
+	@Value("${my.set.values}")
+	private Set<String> setValues;
+	
+	@GetMapping("/setvalues")
+	public Set<String> setvalue() {
+		return setValues;
+	}
+	
+	@Value("#{${dbvalues}}")
+	private Map<String,String> mapValues;
+	
+	@GetMapping("mapvalues")
+	public Map<String,String> mapValues() {
+		return mapValues;
 	}
 
 }
