@@ -9,17 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
 	/*
-	 * 09 Using Environment object
-	 * http://localhost:8080/envdetails
+	 * 06 Configuration Properties
+	 * http://localhost:8080/actuator/configprops
+	 * http://localhost:8080/dbsettings
 	 * 
-	 * From Video 10 we are using different project called spring-cloud-config-server
+	 * 07 is about yml file structure
 	 */
 	@Autowired
-	Environment env;
+	private DbSettings dbSettings;
 	
-	@GetMapping("/envdetails")
-	public String getEnvDetails() {
-		System.out.println("Active Profiles: "+env.getActiveProfiles());
-		return env.toString();
+	/*
+	 * This we will use in 11, 12 Video for spring cloud config
+	 */
+	@GetMapping("/dbsettings")
+	public String getDbSettings() {
+		return dbSettings.toString();
 	}
 }
