@@ -4,26 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vijay.springbootconfig.profiles.SomeService;
+
 @RestController
 public class GreetingController {
 
 	/*
-	 * 06 Configuration Properties
-	 * http://localhost:8080/actuator/configprops
-	 * http://localhost:8080/dbsettings
+	 * 08 Spring profiles explained
+	 * http://localhost:8080/profileinfo
 	 * 
-	 * 07 is about yml file structure
 	 */
 	@Autowired
-	private DbSettings dbSettings;
+	SomeService ss;
 	
-
-	/*
-	 * This we will use in 11, 12 Video for spring cloud config
-	 */
-	@GetMapping("/dbsettings")
-	public String getDbSettings() {
-		return dbSettings.toString();
+	@GetMapping("/profileinfo")
+	public String getProfileInfo() {
+		return ss.toString();
 	}
 
 }
