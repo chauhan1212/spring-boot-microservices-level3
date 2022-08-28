@@ -23,8 +23,11 @@ public class GreetingController {
 	@GetMapping("/staticmessage")
 	public String staticMessage() {
 		return staticMessage;
-	}
+	}	 
 	
+	/**
+	 * if my.defaultvalue not available in application.properties then it will take "default value"
+	 */
 	@Value("${my.defaultvalue: default value}")
 	private String defaultValue;
 
