@@ -12,7 +12,7 @@ public class LocalSourceBean {
 	@Bean
 	public SomeService getService() {
 		SomeService ss = new SomeService();
-		ss.setDbConnection("local connection");
+		ss.setDbConnection("local connection from LocalSourceBean.java");
 		ss.setHost("local host");
 		ss.setPort(1234);
 		return ss;

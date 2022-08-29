@@ -11,7 +11,7 @@ public class ProdSourceBean {
 	@Bean
 	public SomeService getService() {
 		SomeService ss = new SomeService();
-		ss.setDbConnection("production connection");
+		ss.setDbConnection("production connection from ProdSourceBean.java");
 		ss.setHost("prod host");
 		ss.setPort(1234);
 		return ss;
