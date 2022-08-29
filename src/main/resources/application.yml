@@ -9,7 +9,7 @@ my:
   set.values: one,two,three,one
 
 db:
-  connection: database connection
+  connection: database connection from yml file
   host: 127.0.0.1
   port: 8088
 management.endpoints.web.exposure.include: "*"
