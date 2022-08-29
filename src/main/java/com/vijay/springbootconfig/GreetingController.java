@@ -11,13 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class GreetingController {
 
-	/*
-	 * 06 Configuration Properties
-	 * http://localhost:8080/actuator/configprops
-	 * http://localhost:8080/dbsettings
-	 * 
-	 * 07 is about yml file structure
-	 */
 	@Autowired
 	private DbSettings dbSettings;
 	
@@ -32,7 +25,6 @@ public class GreetingController {
 	 * 
 	 * GET:
 	 * localhost:8080/actuator/health
-	 * 
 	 */
 	@GetMapping("/dbsettings")
 	public String getDbSettings() {
