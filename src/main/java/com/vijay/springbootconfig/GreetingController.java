@@ -20,6 +20,6 @@ public class GreetingController {
 	@GetMapping("/dbsettings")
 	public String getDbSettings() {
 		return dbSettings.toString();
-	}
-
+	}	 
+	
 }
